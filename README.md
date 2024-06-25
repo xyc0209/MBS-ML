@@ -1,2 +1,2 @@
 # MBS-ML
-MBS detection bad on machine learning
+MBS detection based on machine learning
