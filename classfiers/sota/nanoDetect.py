@@ -1,6 +1,6 @@
 import joblib
 import pandas as pd
-from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import precision_score, recall_score,accuracy_score
 
 
 
@@ -18,12 +18,14 @@ y_pred = model.predict(X_test)
 # 计算precision和recall
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
-
+accuracy = accuracy_score(y_test, y_pred)
 print('precision:', precision)
 print('recall:', recall)
+print('accuracy:', accuracy)
 
 importance = model.feature_importances_
 feature_names = X_test.columns
+# 计算accuracy
 
 # 创建一个包含特征重要性和特征名称的DataFrame
 feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importance})

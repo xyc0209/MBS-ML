@@ -2,13 +2,19 @@ import joblib
 import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import cross_validate
+from sklearn.preprocessing import MinMaxScaler
 
 # 读取CSV文件
 data = pd.read_csv('D:/dataSet/mbs-interference/nano.csv')
 
 X = data.iloc[:, 3:].drop('nano', axis=1)
 y = data['nano']
+scaler = MinMaxScaler()
+# 对特征数据进行归一化
+X_normalized = scaler.fit_transform(X)
 
+# 将归一化后的数据转换为DataFrame
+X = pd.DataFrame(X_normalized, columns=X.columns)
 # 创建SVM模型
 model = svm.SVC()
 

@@ -1,8 +1,6 @@
 import joblib
 import pandas as pd
-from sklearn.metrics import precision_score, recall_score
-
-
+from sklearn.metrics import precision_score, recall_score, accuracy_score
 
 # 加载模型
 model = joblib.load('greedy_randomForest_smote.pkl')
@@ -18,9 +16,10 @@ y_pred = model.predict(X_test)
 # 计算precision和recall
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
-
+accuracy = accuracy_score(y_test, y_pred)
 print('precision:', precision)
 print('recall:', recall)
+print('accuracy:', accuracy)
 
 importance = model.feature_importances_
 feature_names = X_test.columns

@@ -4,7 +4,7 @@ import pandas as pd
 # 从Excel读取数据
 data = pd.read_excel('C:/Users/xingy/Desktop/detail-rank.xlsx')
 # 合并 'classfier' 和 'sampling' 列为新的一列 'key'
-data['key'] = data['classfier'].astype(str) + '-' + data['samping'].astype(str)
+data['key'] = data['classfier'].astype(str) + '-' + data['sampling'].astype(str)
 # 按照类型（type）进行分组
 grouped = data.groupby('type')
 

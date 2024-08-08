@@ -3,12 +3,19 @@ import pandas as pd
 from scipy.stats import pointbiserialr, spearmanr
 from sklearn import svm
 from sklearn.model_selection import cross_validate
+from sklearn.preprocessing import MinMaxScaler
 
 # 读取CSV文件
 data = pd.read_csv('D:/dataSet/mbs-interference/mega.csv')
 
 X = data.iloc[:, 3:].drop('Mega', axis=1)
 y = data['Mega']
+scaler = MinMaxScaler()
+# 对特征数据进行归一化
+X_normalized = scaler.fit_transform(X)
+
+# 将归一化后的数据转换为DataFrame
+X = pd.DataFrame(X_normalized, columns=X.columns)
 # 计算每个特征和标签之间的斯皮尔曼等级相关系数
 correlations = {}
 for feature in X.columns:

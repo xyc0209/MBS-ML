@@ -42,11 +42,11 @@ grid_search.fit(X_resampled, y_resampled)
 
 print("Best Parameters:", grid_search.best_params_)
 best_model = RandomForestClassifier(**grid_search.best_params_)
-joblib.dump(best_model, 't1.pkl')
+
 cv_results = cross_validate(best_model, X_resampled, y_resampled, cv=5, scoring=scoring)
-joblib.dump(best_model, 't2.pkl')
-# best_model.fit(X_resampled, y_resampled)
-# joblib.dump(best_model, 'nano_randomForest_smote.pkl')
+
+best_model.fit(X_resampled, y_resampled)
+joblib.dump(best_model, 'nano_randomForest_smote.pkl')
 # 输出每次交叉验证的准确率、召回率和 F1 值
 for i in range(5):
     print(f"Fold {i+1}:")

@@ -2,13 +2,19 @@ import joblib
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import cross_validate, GridSearchCV
+from sklearn.preprocessing import MinMaxScaler
 
 # 读取CSV文件
 data = pd.read_csv('D:/dataSet/mbs-interference/mega.csv')
 
 X = data.iloc[:, 3:].drop('Mega', axis=1)
 y = data['Mega']
+scaler = MinMaxScaler()
+# 对特征数据进行归一化
+X_normalized = scaler.fit_transform(X)
 
+# 将归一化后的数据转换为DataFrame
+X = pd.DataFrame(X_normalized, columns=X.columns)
 param_grid = {
     'hidden_layer_sizes': [(20,), (50,), (100,)],  # 隐藏层神经元数量
     'activation': ['relu', 'tanh'],  # 激活函数

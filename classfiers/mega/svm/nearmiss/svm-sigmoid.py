@@ -3,12 +3,19 @@ import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import cross_validate
 from imblearn.under_sampling import NearMiss
+from sklearn.preprocessing import MinMaxScaler
+
 # 读取CSV文件
 data = pd.read_csv('D:/dataSet/mbs/mega.csv')
 
 X = data.iloc[:, 3:].drop('Mega', axis=1)
 y = data['Mega']
+scaler = MinMaxScaler()
+# 对特征数据进行归一化
+X_normalized = scaler.fit_transform(X)
 
+# 将归一化后的数据转换为DataFrame
+X = pd.DataFrame(X_normalized, columns=X.columns)
 # 使用 NearMiss-1 进行下采样
 nm = NearMiss(version=1)
 X_resampled, y_resampled = nm.fit_resample(X, y)

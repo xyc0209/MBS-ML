@@ -21,3 +21,12 @@ recall = recall_score(y_test, y_pred)
 
 print('precision:', precision)
 print('recall:', recall)
+importance = model.feature_importances_
+feature_names = X_test.columns
+
+# 创建一个包含特征重要性和特征名称的DataFrame
+feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importance})
+# 根据特征重要性降序排序
+feature_importance_df = feature_importance_df.sort_values('Importance', ascending=False)
+
+print(feature_importance_df)
