@@ -6,13 +6,13 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # 加载模型
-model = joblib.load('bloated_randomForest_smote.pkl')
-bottleneck_model = joblib.load('bottleneck_randomForest_smote.pkl')
-chain_model = joblib.load('chain_randomForest_smote.pkl')
-chatty_model = joblib.load('chatty_randomForest_smote.pkl')
-greedy_model = joblib.load('greedy_randomForest_smote.pkl')
-mega_model = joblib.load('mega_randomForest_smote.pkl')
-nano_model = joblib.load('nano_randomForest_smote.pkl')
+model = joblib.load('../bloated_randomForest_smote.pkl')
+bottleneck_model = joblib.load('../bottleneck_randomForest_smote.pkl')
+chain_model = joblib.load('../chain_randomForest_smote.pkl')
+chatty_model = joblib.load('../chatty_randomForest_smote.pkl')
+greedy_model = joblib.load('../greedy_randomForest_smote.pkl')
+mega_model = joblib.load('../mega_randomForest_smote.pkl')
+nano_model = joblib.load('../nano_randomForest_smote.pkl')
 
 
 @app.route('/prediction', methods=['POST'])
