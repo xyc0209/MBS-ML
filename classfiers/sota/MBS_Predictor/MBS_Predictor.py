@@ -17,27 +17,27 @@ nano_model = joblib.load('../nano_randomForest_smote.pkl')
 
 @app.route('/prediction', methods=['POST'])
 def predict():
-    # 从请求体中获取源码地址
+    # Get the source code path from the request body
     request_data = request.get_json()
     reposPath = request_data.get('reposPath')
     outputPath = request_data.get('outputPath')
     if not reposPath:
         return jsonify({'error': 'Source code path is required'}), 400
 
-    # 向 localhost:8080/extract 发送请求
+    # Send a request to localhost:8080/data/features
     response = requests.post('http://localhost:8080/data/features', json={'reposPath': reposPath, 'outputPath': outputPath})
 
     if response.status_code != 200:
         return jsonify({'error': 'Failed to extract data'}), 500
 
-    # 从响应中获取文件路径
+    # Get the file path from the response
     file_path = response.text
 
-    # 读取测试数据
+    # Use the loaded models to make predictions
     data_test = pd.read_csv(file_path)
     X_test = data_test.iloc[:, 3:]
 
-    # 使用加载的模型进行预测
+    # Use the loaded models to make predictions
     y_pred = model.predict(X_test)
     bottleneck_pred = bottleneck_model.predict(X_test)
     chain_pred = chain_model.predict(X_test)
@@ -46,7 +46,7 @@ def predict():
     mega_pred = mega_model.predict(X_test)
     nano_pred = nano_model.predict(X_test)
 
-    # 将预测结果作为新的列添加
+    # Add the prediction results as new columns
     data_test['Bloated'] = y_pred
     data_test['Bottleneck'] = bottleneck_pred
     data_test['Chain'] = chain_pred
@@ -55,10 +55,10 @@ def predict():
     data_test['Mega'] = mega_pred
     data_test['Nano'] = nano_pred
 
-    # 将更新后的数据保存回文件
+    # Save the updated data back to the file
     data_test.to_csv(file_path, index=False)
 
-    # 返回成功响应
+    # Return a success response
     return jsonify({'message': '预测结果已写入文件', 'file_path': file_path})
 
 
