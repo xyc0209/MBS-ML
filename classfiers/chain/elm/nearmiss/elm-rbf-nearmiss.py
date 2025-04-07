@@ -27,7 +27,7 @@ X, y = nm.fit_resample(X, y)
 results = []
 
 # 5-fold cross-validation
-kf = KFold(n_splits=2, shuffle=True, random_state=42)
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
 for fold, (train_idx, test_idx) in enumerate(kf.split(X), 1):
     X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
     y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]

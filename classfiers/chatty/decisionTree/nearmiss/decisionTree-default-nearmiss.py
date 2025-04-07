@@ -49,7 +49,6 @@ best_model = DecisionTreeClassifier(**grid_search.best_params_)
 
 
 # 进行五折交叉验证
-scoring = ['accuracy', 'recall', 'f1']
 cv_results = cross_validate(best_model, X_resampled, y_resampled, cv=5, scoring=scoring)
 
 # 输出每次交叉验证的准确率、召回率和 F1 值

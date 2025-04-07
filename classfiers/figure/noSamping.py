@@ -5,7 +5,6 @@ import seaborn as sns
 # 设置Seaborn的配色方案
 sns.set(style="whitegrid", palette="colorblind", font_scale=1.2)
 
-[0.916678322, 1, 1, 1, 0.831449275, 0.95057097, 0.985717816]
 # 创建每个子图的分类器性能数据
 classifier_scores_list = [
     [[0.9473, 0.9843, 0.9316, 0.9778, 0.9944, 0.9806, 0.9429]],  # MS的数据

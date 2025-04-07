@@ -94,6 +94,5 @@ mean_row = pd.DataFrame({
 output = output.append(mean_row, ignore_index=True)
 
 
-
 # Save results to Excel
 output.to_excel('greedy_welm_rbf_results.xlsx', index=False)

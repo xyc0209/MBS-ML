@@ -19,10 +19,12 @@ y_pred = model.predict(X_test)
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
 
+
 print('precision:', precision)
 print('recall:', recall)
 importance = model.feature_importances_
 feature_names = X_test.columns
+
 
 # 创建一个包含特征重要性和特征名称的DataFrame
 feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importance})

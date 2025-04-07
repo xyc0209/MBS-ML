@@ -12,7 +12,7 @@ y_test = data_test['bottleneck']
 
 # 使用加载的模型进行预测
 y_pred = model.predict(X_test)
-
+print(y_pred)
 # 计算precision和recall
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)

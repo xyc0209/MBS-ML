@@ -24,7 +24,8 @@ model = svm.SVC(kernel='linear')
 # 进行五折交叉验证
 scoring = ['precision', 'recall', 'f1', 'roc_auc']
 cv_results = cross_validate(model, X, y, cv=5, scoring=scoring)
-
+model.fit(X, y)
+joblib.dump(model, 'chatty_svm_linear_smote.pkl')
 # 输出每次交叉验证的准确率、召回率和 F1 值
 for i in range(5):
     print(f"Fold {i+1}:")

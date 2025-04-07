@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import NearMiss
-from sklearn.metrics import make_scorer, recall_score, accuracy_score, f1_score
+from sklearn.metrics import make_scorer, recall_score, precision_score, f1_score, roc_auc_score
 from sklearn.naive_bayes import CategoricalNB, MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV

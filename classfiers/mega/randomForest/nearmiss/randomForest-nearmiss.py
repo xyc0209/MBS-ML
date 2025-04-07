@@ -11,6 +11,7 @@ data = pd.read_csv('D:/dataSet/mbs/mega.csv')
 X = data.iloc[:, 3:].drop('Mega', axis=1)
 y = data['Mega']
 
+print(X)
 param_grid = {
     'n_estimators': [100, 200, 300],  # 树的数量
     'max_depth': [None, 5, 10],  # 最大深度

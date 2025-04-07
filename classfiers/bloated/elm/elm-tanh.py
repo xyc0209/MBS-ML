@@ -42,17 +42,17 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(X), 1):
     accuracy, recall, f1, auc = evaluate_model(model, X_test_array, y_test_array)
 
     # Append results to list
-    results.append({'Fold': fold, 'Accuracy': accuracy, 'Recall': recall,
+    results.append({'Fold': fold, 'Precision': accuracy, 'Recall': recall,
                     'F1': f1, 'AUC': auc})
     print("fold:", fold)
-    print("Accuracy:", accuracy)
+    print("Precision:", accuracy)
     print("Recall:", recall)
     print("F1 Score:", f1)
     print("AUC:", auc)
 # Convert results list to DataFrame
 output = pd.DataFrame(results)
 print("Average")
-print('Accuracy',output['Accuracy'].mean())
+print('Precision',output['Precision'].mean())
 print('Recall',output['Recall'].mean())
 print('F1',output['F1'].mean())
 print('AUC',output['AUC'].mean())
@@ -61,7 +61,7 @@ average_results = output.mean()
 # 添加平均值行
 mean_row = pd.DataFrame({
     'Fold': ['Average'],
-    'Accuracy': output['Accuracy'].mean(),
+    'Precision': output['Precision'].mean(),
     'Recall': output['Recall'].mean(),
     'F1': output['F1'].mean(),
     'AUC': output['AUC'].mean()

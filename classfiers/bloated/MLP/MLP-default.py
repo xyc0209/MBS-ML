@@ -22,6 +22,7 @@ param_grid = {
     'alpha': [0.0001, 0.001, 0.01]  # 正则化项的强度
 }
 
+
 # 创建MLP模型
 model = MLPClassifier()
 

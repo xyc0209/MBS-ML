@@ -74,4 +74,4 @@ output = output.append(mean_row, ignore_index=True)
 
 
 # Save results to Excel
-output.to_excel('ELM_smote_results.xlsx', index=False)
+output.to_excel('ELM_smote_lin_results.xlsx', index=False)
