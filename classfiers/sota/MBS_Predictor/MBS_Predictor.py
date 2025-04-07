@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# 加载模型
+# Load models
 model = joblib.load('../bloated_randomForest_smote.pkl')
 bottleneck_model = joblib.load('../bottleneck_randomForest_smote.pkl')
 chain_model = joblib.load('../chain_randomForest_smote.pkl')
